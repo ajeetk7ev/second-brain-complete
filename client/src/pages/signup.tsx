@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { signup } from '../services/operations/auth/api';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export interface FormData {
   username: string;
@@ -63,6 +64,9 @@ const SignUp: React.FC = () => {
             Sign Up
           </button>
         </form>
+        <p className="text-center text-gray-600 mt-6">
+          Already have an account? <Link to="/signin" className="text-blue-500 hover:underline">Log in</Link>
+        </p>
       </div>
     </div>
   );

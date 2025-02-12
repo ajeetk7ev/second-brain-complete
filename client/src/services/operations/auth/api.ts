@@ -4,7 +4,7 @@ import { AppDispatch } from "../../../app/store";
 import { setLoading } from "../../../slices/authSlice";
 import { authEndpoints } from "../../apis";
 
-const {SIGNUP_API} = authEndpoints;
+const {SIGNUP_API,SIGNIN_API} = authEndpoints;
 
 export const signup = (inputData:any)=>{
     return async(dispatch:AppDispatch)=>{
@@ -21,4 +21,18 @@ export const signup = (inputData:any)=>{
 
          dispatch(setLoading(false));
     }
+}
+
+export const signin = (inputData:any)=>{
+   return async(dispatch:AppDispatch)=>{
+      dispatch(setLoading(true));
+      try {
+         const res = await axios.post(SIGNIN_API,inputData);
+         console.log("SIGNIN RESPONSE IS ",res);
+      } catch (error) {
+         console.log(error);
+      }
+
+      dispatch(setLoading(false));
+   }
 }
